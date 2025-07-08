@@ -18,10 +18,6 @@ const removeSpecialChars = (val) => {
 }
 
 const addOrUpdateTask = () => {
-   if(!titleInput.value.trim()){
-    alert("Please provide a title");
-    return;
-  }
   const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
   const taskObj = {
     id: `${removeSpecialChars(titleInput.value).toLowerCase().split(" ").join("-")}-${Date.now()}`,
@@ -30,16 +26,20 @@ const addOrUpdateTask = () => {
     description: removeSpecialChars(descriptionInput.value),
   };
   
-
+  
   if (dataArrIndex === -1) {
     taskData.unshift(taskObj);
   } else {
     taskData[dataArrIndex] = taskObj;
   }
-
+  
   localStorage.setItem("data", JSON.stringify(taskData));
-  updateTaskContainer()
-  reset()
+  updateTaskContainer();
+  reset();
+//   if(!titleInput.value.trim()){
+//    alert("Please provide a title");
+//    return;
+//  }
 };
 
 const updateTaskContainer = () => {
@@ -49,12 +49,28 @@ const updateTaskContainer = () => {
     ({ id, title, date, description }) => {
         (tasksContainer.innerHTML += `
         <div class="task" id="${id}">
-          <p><strong>Title:</strong> ${title}</p>
-          <p><strong>Date:</strong> ${date}</p>
-          <p><strong>Description:</strong> ${description}</p>
-          <button onclick="editTask(this)" type="button" class="btn">Edit</button>
-          <button onclick="deleteTask(this)" type="button" class="btn">Delete</button> 
-        </div>
+        <div class="task-container">
+          <p>${title} <span class="desc-item">title</span></p>
+          <p>${date ? date : 'без даты'} <span class="desc-item">deadline</span></p>
+          <p>${description ? description : 'без подробностей'} <span class="desc-item">description</span></p>
+         </div>
+          <div class="btn-container">
+          <button onclick="editTask(this)" type="button" class="btn">
+          Edit 
+          <svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.292893 16.3783C-0.0976311 16.7689 -0.0976311 17.402 0.292893 17.7926C0.683418 18.1831 1.31658 18.1831 1.70711 17.7926L0.292893 16.3783ZM1 17.0854L1.70711 17.7926L10.275 9.22465L9.56791 8.51754L8.8608 7.81043L0.292893 16.3783L1 17.0854Z" fill="#424242"/>
+          <path d="M1.79549 0.292893C1.40496 -0.0976311 0.771796 -0.0976311 0.381272 0.292893C-0.00925217 0.683418 -0.00925217 1.31658 0.381272 1.70711L1.79549 0.292893ZM1.08838 1L0.381272 1.70711L8.94918 10.275L9.65629 9.56791L10.3634 8.8608L1.79549 0.292893L1.08838 1Z" fill="#424242"/>
+          </svg>
+          </button>
+          <button onclick="deleteTask(this)" type="button" class="btn">
+          Delete 
+          <svg width="11" height="19" viewBox="0 0 11 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.292893 16.3783C-0.0976311 16.7689 -0.0976311 17.402 0.292893 17.7926C0.683418 18.1831 1.31658 18.1831 1.70711 17.7926L0.292893 16.3783ZM1 17.0854L1.70711 17.7926L10.275 9.22465L9.56791 8.51754L8.8608 7.81043L0.292893 16.3783L1 17.0854Z" fill="#424242"/>
+          <path d="M1.79549 0.292893C1.40496 -0.0976311 0.771796 -0.0976311 0.381272 0.292893C-0.00925217 0.683418 -0.00925217 1.31658 0.381272 1.70711L1.79549 0.292893ZM1.08838 1L0.381272 1.70711L8.94918 10.275L9.65629 9.56791L10.3634 8.8608L1.79549 0.292893L1.08838 1Z" fill="#424242"/>
+          </svg>
+          </button> 
+          </div>
+           </div>
       `)
     }
   );
@@ -63,17 +79,17 @@ const updateTaskContainer = () => {
 
 const deleteTask = (buttonEl) => {
   const dataArrIndex = taskData.findIndex(
-    (item) => item.id === buttonEl.parentElement.id
+    (item) => item.id === buttonEl.parentElement.parentElement.id
   );
 
-  buttonEl.parentElement.remove();
+  buttonEl.parentElement.parentElement.remove();
   taskData.splice(dataArrIndex, 1);
   localStorage.setItem("data", JSON.stringify(taskData));
 }
 
 const editTask = (buttonEl) => {
     const dataArrIndex = taskData.findIndex(
-    (item) => item.id === buttonEl.parentElement.id
+    (item) => item.id === buttonEl.parentElement.parentElement.id
   );
 
   currentTask = taskData[dataArrIndex];
