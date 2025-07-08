@@ -14,17 +14,30 @@
     <h1>Todo App</h1>
     <div class="todo-app">
       <button id="open-task-form-btn" class="btn large-btn">
-        Add New Task
+        <span>Add New Task</span> <svg width="14" height="23" viewBox="0 0 14 23" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0.889817 20.6711C0.499293 21.0616 0.499293 21.6948 0.889817 22.0853C1.28034 22.4758 1.91351 22.4758 2.30403 22.0853L0.889817 20.6711ZM1.59692 21.3782L2.30403 22.0853L13.0026 11.3868L12.2954 10.6797L11.5883 9.97256L0.889817 20.6711L1.59692 21.3782Z"
+            fill="#FCFCFC" />
+          <path
+            d="M2.41426 0.585786C2.02374 0.195261 1.39057 0.195261 1.00005 0.585786C0.609522 0.97631 0.609522 1.60947 1.00005 2L2.41426 0.585786ZM1.70715 1.29289L1.00005 2L11.6986 12.6985L12.4057 11.9914L13.1128 11.2843L2.41426 0.585786L1.70715 1.29289Z"
+            fill="#FCFCFC" />
+        </svg>
       </button>
       <form class="task-form hidden" id="task-form">
         <div class="task-form-header">
           <button id="close-task-form-btn" class="close-task-form-btn" type="button" aria-label="close">
-            <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px"><path fill="#F44336" d="M21.5 4.5H26.501V43.5H21.5z" transform="rotate(45.001 24 24)" /><path fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z" transform="rotate(135.008 24 24)" /></svg>
+            <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="33" height="33" rx="11" fill="#1C1C1C" />
+              <path d="M22.9812 10.5849L10.5284 23.0377" stroke="#FCFCFC" stroke-width="2" stroke-linecap="round" />
+              <path d="M22.415 23.0377L9.96221 10.5849" stroke="#FCFCFC" stroke-width="2" stroke-linecap="round" />
+            </svg>
+
           </button>
         </div>
         <div class="task-form-body">
           <label class="task-form-label" for="title-input">Title</label>
-          <input required type="text" class="form-control" id="title-input" value="" />
+          <input required type="text" class="form-control" id="title-input" value=""  />
           <label class="task-form-label" for="date-input">Date</label>
           <input type="date" class="form-control" id="date-input" value="" />
           <label class="task-form-label" for="description-input">Description</label>
@@ -33,6 +46,7 @@
         <div class="task-form-footer">
           <button id="add-or-update-task-btn" class="btn large-btn" type="submit">
             Add Task
+
           </button>
         </div>
       </form>
@@ -52,6 +66,7 @@
       <div id="tasks-container"></div>
     </div>
   </main>
+
   <script src="script.js"></script>
 </body>
 
