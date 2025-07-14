@@ -3,7 +3,7 @@
   --light-grey: #1c1c1c;
   --dark-grey: #000000;
   --accent: #68fc65;
-  
+
   --gray-color: #424242;
 }
 
@@ -88,7 +88,7 @@ h1 {
   border: none;
   cursor: pointer;
 }
-.close-task-form-btn:hover{
+.close-task-form-btn:hover {
   svg path {
     stroke: var(--accent);
   }
@@ -132,10 +132,12 @@ h1 {
 
 input,
 textarea {
-  color: var(--light-grey);
+  color: var(--gray-color);
   background-color: var(--dark-grey);
   border: 2px solid var(--gray-color);
   border-radius: 8px;
+  font-family: Helvetica, sans-serif;
+  font-weight: 600;
 }
 input:hover,
 textarea:hover {
@@ -144,7 +146,7 @@ textarea:hover {
 }
 input:focus,
 textarea:focus {
-   border-color: var(--accent);
+  border-color: var(--accent);
   outline: none;
   color: var(--accent);
   /* border: 2px solid var(--accent); */
@@ -159,7 +161,7 @@ textarea:focus {
 .task-form-label {
   color: var(--gray-color);
   font-weight: 400;
-  font-size: smaller;
+  font-size: 16px;
   margin-bottom: 5px;
   /* font-size: 1.3rem;
   font-weight: bold; */
@@ -199,19 +201,19 @@ textarea:focus {
 .task {
   margin: 5px 0 20px;
 }
-.task-container{
+.task-container {
   padding: 12px;
   background-color: var(--light-grey);
   border-radius: 8px;
-color: var(--white);
-line-height: 1.3;
-p{
-  display: flex;
-  justify-content: space-between;
-  .desc-item{
-    color: var(--gray-color);
+  color: var(--white);
+  line-height: 1.3;
+  p {
+    display: flex;
+    justify-content: space-between;
+    .desc-item {
+      color: var(--gray-color);
+    }
   }
-}
 }
 .btn-container {
   display: flex;
@@ -228,17 +230,15 @@ p{
     width: 125px;
   }
   .btn:hover {
-  
     color: var(--white);
-    svg path{
-      fill:var(--white);
+    svg path {
+      fill: var(--white);
     }
-    
   }
   .btn:focus {
     color: var(--white);
-    svg path{
-      fill:var(--white);
+    svg path {
+      fill: var(--white);
     }
     border: 1px solid var(--white);
   }
